@@ -29,7 +29,6 @@ async.waterfall([
 		
 	},
 	function(results, callback) {
-		console.log(results)
 		if(dstPath.lastIndexOf('/') !== dstPath.length - 1) dstPath = dstPath + '/'
 		fs.createWriteStream(dstPath + 'lib/tpl.json', {
 			flags: 'w'
