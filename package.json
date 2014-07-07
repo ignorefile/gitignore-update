@@ -1,0 +1,31 @@
+{
+  "name": "gitignore-update",
+  "version": "0.0.1",
+  "description": "update gitignore file's templates",
+  "main": "index.js",
+  "bin": {
+    "ignore-update": "index.js"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "through": "^2.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ignorefile/gitignore-update.git"
+  },
+  "keywords": [
+    "cli",
+    "gitignore"
+  ],
+  "author": "Leigh Zhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ignorefile/gitignore-update/issues"
+  },
+  "homepage": "https://github.com/ignorefile/gitignore-update"
+}
