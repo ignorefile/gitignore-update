@@ -1,6 +1,6 @@
 {
   "name": "gitignore-update",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "update gitignore file's templates",
   "main": "index.js",
   "bin": {
