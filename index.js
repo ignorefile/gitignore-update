@@ -2,8 +2,11 @@ var fs = require('fs');
 
 var through = require('through');
 var async = require('async');
+var _ = require('underscore');
 
 var walker = require('./lib/walk');
+
+var customTpls = require('./res/gitignore_tpl.json');
 
 var srcPath = process.argv[2];
 var dstPath = process.argv[3];
@@ -29,6 +32,7 @@ async.waterfall([
 		
 	},
 	function(results, callback) {
+		var results = _.extend(customTpls, results);
 		if(dstPath.lastIndexOf('/') !== dstPath.length - 1) dstPath = dstPath + '/'
 		fs.createWriteStream(dstPath + 'lib/tpl.json', {
 			flags: 'w'
