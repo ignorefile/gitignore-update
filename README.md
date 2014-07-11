@@ -10,6 +10,11 @@ But, if you find you need some tpls from github's repo badly, then you shuld try
 ignore-update src dst
 ```
 
+eg.
+```
+ignore-update ../gitignore ../gitignore-gen
+```
+
 # Notes
 
 * The templates of gitignore file in gitignore-gen repo is come from  [GitHub's gitignore repo](https://github.com/github/gitignore)
