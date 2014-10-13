@@ -1,3 +1,4 @@
+'use strict';
 var fs = require('fs');
 
 var through = require('through');
@@ -14,8 +15,10 @@ var dstPath = process.argv[3];
 async.waterfall([
 	function(callback) {
 		walker(srcPath, [], function(err, result) {
-			if(err) return callback(err)
-			callback(null, result)
+			if (err) {
+				return callback(err);
+			}
+			callback(null, result);
 		});
 	},
 	function(filelist, callback) {
@@ -23,19 +26,23 @@ async.waterfall([
 			fs.createReadStream(item).pipe(through(function write(buf) {
 				var itemname = item.split('/').pop().split('.')[0].toLowerCase();
 				memo[itemname] = buf.toString();
-				callback(null, memo)
-			}))
+				callback(null, memo);
+			}));
 		}, function(err, result) {
-			if(err) return callback(err)
-			callback(null, result)
-		})
-		
+			if (err) {
+				return callback(err);
+			}
+			callback(null, result);
+		});
+
 	},
 	function(results, callback) {
-		var results = _.extend(customTpls, results);
-		if(dstPath.lastIndexOf('/') !== dstPath.length - 1) dstPath = dstPath + '/'
+		results = _.extend(customTpls, results);
+		if (dstPath.lastIndexOf('/') !== dstPath.length - 1) {
+			dstPath = dstPath + '/';
+		}
 		fs.createWriteStream(dstPath + 'lib/tpl.json', {
 			flags: 'w'
-		}).end(JSON.stringify(results))
+		}).end(JSON.stringify(results));
 	}
-])
+]);
