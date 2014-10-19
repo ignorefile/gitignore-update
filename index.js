@@ -25,7 +25,7 @@ async.waterfall([
 		async.reduce(filelist, {}, function(memo, item, callback) {
 			fs.createReadStream(item).pipe(through(function write(buf) {
 				var itemname = item.split('/').pop().split('.')[0].toLowerCase();
-				memo[itemname] = buf.toString();
+				memo[itemname] = '#=<<< ' + itemname + ' =#\n' +  buf.toString() + '\n#= ' + itemname + ' >>>=#';
 				callback(null, memo);
 			}));
 		}, function(err, result) {
